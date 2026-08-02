@@ -16,7 +16,7 @@ import {Unixtime} from 'infinite-unixtime';
 ```
 
 For the browser, download a build from the
-[releases](https://github.com/saro-lab/unixtime-npm/releases) page.
+[releases](https://github.com/saro-lab/misc-npm/releases) page.
 
 ```html
 <script src="./infinite-unixtime-1.1.4.min.js"></script>

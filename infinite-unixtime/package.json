@@ -17,11 +17,11 @@
   "license": "MIT",
   "homepage": "https://github.com/saro-lab/misc-npm/tree/master/infinite-unixtime",
   "bugs": {
-    "url": "https://github.com/saro-lab/unixtime-npm/issues"
+    "url": "https://github.com/saro-lab/misc-npm/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/saro-lab/unixtime-npm.git"
+    "url": "git+https://github.com/saro-lab/misc-npm.git"
   },
   "type": "module",
   "main": "./dist/index.cjs",
