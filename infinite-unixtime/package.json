@@ -15,7 +15,7 @@
   ],
   "author": "marker",
   "license": "MIT",
-  "homepage": "https://github.com/saro-lab/unixtime-npm",
+  "homepage": "https://github.com/saro-lab/misc-npm/tree/master/infinite-unixtime",
   "bugs": {
     "url": "https://github.com/saro-lab/unixtime-npm/issues"
   },
