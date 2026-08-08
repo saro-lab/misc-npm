@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <title>Infinite Unixtime</title>
+  <!-- 다른 프로젝트와 달리 기존 심볼이 없어 새로 만들었다. 렘니스케이트 하나 —
+       "연도 제한이 없다"가 이 라이브러리의 전부라서 그것만 그린다. -->
+  <style>
+    .mark { color: #0e7490; }
+    @media (prefers-color-scheme: dark) { .mark { color: #5ec8de; } }
+  </style>
+  <g class="mark" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M16 16c-2.3-3.3-4.1-4.9-6.3-4.9a4.9 4.9 0 0 0 0 9.8c2.2 0 4-1.6 6.3-4.9z"/>
+    <path d="M16 16c2.3 3.3 4.1 4.9 6.3 4.9a4.9 4.9 0 0 0 0-9.8c-2.2 0-4 1.6-6.3 4.9z"/>
+  </g>
+</svg>

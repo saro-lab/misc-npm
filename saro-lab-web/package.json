@@ -1,0 +1,30 @@
+{
+  "name": "saro-lab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "assets": "node origin/ci/build.mjs",
+    "dev": "vitepress dev docs --host 0.0.0.0",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "preview": "npm run docs:build && wrangler dev",
+    "deploy": "npm run docs:build && wrangler deploy"
+  },
+  "dependencies": {
+    "@shikijs/langs": "^4.4.2",
+    "@shikijs/themes": "^4.4.2",
+    "infinite-unixtime": "^1.1.5",
+    "shiki": "^4.4.2"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.2.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vitepress": "^2.0.0-alpha.19",
+    "vue": "^3.6.0-rc.2",
+    "wrangler": "^4.120.0"
+  }
+}

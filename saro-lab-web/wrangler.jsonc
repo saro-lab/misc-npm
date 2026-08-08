@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "saro-lab",
+  "compatibility_date": "2026-05-03",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "docs/.vitepress/dist",
+    // 로케일 접두사 없는 경로는 404.html 로 떨어뜨린다. 거기서 applyLanguage() 가
+    // 클라이언트 사이드로 올바른 로케일 경로에 다시 붙인다 — 서버 리다이렉트가 없는 이유.
+    "not_found_handling": "404-page"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
