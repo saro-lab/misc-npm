@@ -3,7 +3,12 @@
     <div class="g-menu-backdrop" @click="onMenu = false"></div>
 
     <div class="g-glass md rd-box g-menu-panel">
-      <div translate="no" class="material-symbols-outlined g-menu-close g-link-hover" @click="onMenu = false">close</div>
+      <div class="g-menu-close g-link-hover" @click="onMenu = false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </div>
 
       <div class="menu-sections">
         <section v-for="section in navSections" :key="section.titleKey" class="menu-section">
@@ -25,7 +30,12 @@
                 >
                   <img v-if="entry.icon" class="menu-icon" :src="entry.icon" alt="" width="16" height="16" />
                   <span class="menu-label">{{ entry.title || t(entry.titleKey!) }}</span>
-                  <span translate="no" class="material-symbols-outlined menu-out-icon">open_in_new</span>
+                  <svg class="menu-out-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M14 4h6v6" />
+                    <path d="M20 4l-8.5 8.5" />
+                    <path d="M18 14v4.5A1.5 1.5 0 0 1 16.5 20h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6H10" />
+                  </svg>
                 </a>
               </div>
               <div v-else :key="entry.path" class="menu-row" :class="{ sub: entry.sub }">
@@ -113,12 +123,12 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
     /* 외부로 나가는 항목 : 현재 문서가 될 수 없으므로 on 상태가 없고,
        대신 아이콘으로 "여기를 떠난다"를 미리 알린다 */
     .menu-out-icon {
-        @apply text-[0.85rem]! opacity-45;
+        @apply w-3.5 h-3.5 shrink-0 opacity-45;
     }
     /* 하위 항목은 들여쓰기 대신 세로 가이드 레일로 묶는다 (행이 붙어 있어 선이 이어진다) */
     .menu-row.sub {
-        @apply ml-2 pl-1.5;
-        border-left: 1px solid color-mix(in srgb, currentColor 14%, transparent);
+        @apply ms-2 ps-1.5;
+        border-inline-start: 1px solid color-mix(in srgb, currentColor 14%, transparent);
     }
 
     /* ── desktop: fixed left sidebar ─────────────────────────────────── */
@@ -158,8 +168,12 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
             animation: g-menu-pop 0.18s ease-out;
         }
         .g-menu-close {
-            @apply sticky top-0 float-right -mr-1 cursor-pointer text-2xl;
+            @apply sticky top-0 float-end -me-1 cursor-pointer;
             color: var(--c-text-2);
+
+            svg {
+                @apply w-6 h-6;
+            }
         }
 
         .menu-sections {

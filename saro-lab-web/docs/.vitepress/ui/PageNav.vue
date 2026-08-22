@@ -1,7 +1,10 @@
 <template>
   <nav v-if="prevItem || nextItem" class="pn-row">
     <a v-if="prevItem" :href="root + prevItem.path" class="pn-box pn-prev">
-      <span translate="no" class="material-symbols-outlined arrow">arrow_back</span>
+      <svg class="arrow g-flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5M11 6l-6 6 6 6" />
+      </svg>
       <div class="pn-text">
         <div class="pn-lbl">{{ t('nav_prev') }}</div>
         <div class="pn-title">{{ label(prevItem) }}</div>
@@ -13,7 +16,10 @@
         <div class="pn-lbl">{{ t('nav_next') }}</div>
         <div class="pn-title">{{ label(nextItem) }}</div>
       </div>
-      <span translate="no" class="material-symbols-outlined arrow">arrow_forward</span>
+      <svg class="arrow g-flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M13 6l6 6-6 6" />
+      </svg>
     </a>
   </nav>
 </template>
@@ -54,7 +60,7 @@ function label(entry: NavLink): string {
     }
 }
 .pn-next {
-    @apply justify-end text-right;
+    @apply justify-end text-end;
 }
 .pn-spacer {
     @apply flex-1;
@@ -69,6 +75,6 @@ function label(entry: NavLink): string {
     @apply text-[0.875rem] font-medium truncate;
 }
 .arrow {
-    @apply text-lg! opacity-60;
+    @apply w-[1.05rem] h-[1.05rem] shrink-0 opacity-60;
 }
 </style>

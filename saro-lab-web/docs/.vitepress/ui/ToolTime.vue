@@ -21,7 +21,12 @@
       <span v-if="dispTz !== 0 && dispTz !== -localTzo" class="g-chip on tt-chip-static">{{ fmtTz(dispTz) }}</span>
       <div class="flex-1"></div>
       <button class="g-chip" @click="goNow">
-        <span translate="no" class="material-symbols-outlined tt-chip-icon">my_location</span>{{ t('now') }}
+        <svg class="tt-chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="7" />
+          <circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none" />
+          <path d="M12 1.8v3.2M12 19v3.2M1.8 12h3.2M19 12h3.2" />
+        </svg>{{ t('now') }}
       </button>
     </div>
 
@@ -57,12 +62,14 @@
         <div class="tt-lbl">{{ t('year') }}</div>
         <div class="tt-stepper">
           <button class="tt-step" :title="`${t('year')} -1`" @click="stepUnit('year', -1)">
-            <span translate="no" class="material-symbols-outlined">remove</span>
+            <svg class="tt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg>
           </button>
           <input type="text" inputmode="numeric" spellcheck="false" autocomplete="off"
                  v-model="fYear" @focus="onFocus('year')" @blur="editing = ''" @input="onField('year')"/>
           <button class="tt-step" :title="`${t('year')} +1`" @click="stepUnit('year', 1)">
-            <span translate="no" class="material-symbols-outlined">add</span>
+            <svg class="tt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </button>
         </div>
       </div>
@@ -71,12 +78,14 @@
           <div class="tt-lbl">{{ t(u.label) }}</div>
           <div class="tt-stepper">
             <button class="tt-step" :title="`${t(u.label)} -1`" @click="stepUnit(u.key, -1)">
-              <span translate="no" class="material-symbols-outlined">remove</span>
+              <svg class="tt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg>
             </button>
             <input type="text" inputmode="numeric" spellcheck="false" autocomplete="off"
                    v-model="fields[u.key].value" @focus="onFocus(u.key)" @blur="editing = ''" @input="onField(u.key)"/>
             <button class="tt-step" :title="`${t(u.label)} +1`" @click="stepUnit(u.key, 1)">
-              <span translate="no" class="material-symbols-outlined">add</span>
+              <svg class="tt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
             </button>
           </div>
         </div>
@@ -87,12 +96,14 @@
           <div class="tt-lbl">{{ t(u.label) }}</div>
           <div class="tt-stepper">
             <button class="tt-step" :title="`${t(u.label)} -1`" @click="stepUnit(u.key, -1)">
-              <span translate="no" class="material-symbols-outlined">remove</span>
+              <svg class="tt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg>
             </button>
             <input type="text" inputmode="numeric" spellcheck="false" autocomplete="off"
                    v-model="fields[u.key].value" @focus="onFocus(u.key)" @blur="editing = ''" @input="onField(u.key)"/>
             <button class="tt-step" :title="`${t(u.label)} +1`" @click="stepUnit(u.key, 1)">
-              <span translate="no" class="material-symbols-outlined">add</span>
+              <svg class="tt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
             </button>
           </div>
         </div>
@@ -104,17 +115,21 @@
       <div class="tt-panel">
         <div class="tt-cal-head">
           <button class="tt-nav" :title="`${t('year')} -1`" @click="stepUnit('year', -1)">
-            <span translate="no" class="material-symbols-outlined">keyboard_double_arrow_left</span>
+            <svg class="tt-icon g-flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 5l-7 7 7 7M11 5l-7 7 7 7"/></svg>
           </button>
           <button class="tt-nav" :title="`${t('month')} -1`" @click="stepUnit('month', -1)">
-            <span translate="no" class="material-symbols-outlined">chevron_left</span>
+            <svg class="tt-icon g-flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
           </button>
           <div class="tt-cal-title">{{ cal.title }}</div>
           <button class="tt-nav" :title="`${t('month')} +1`" @click="stepUnit('month', 1)">
-            <span translate="no" class="material-symbols-outlined">chevron_right</span>
+            <svg class="tt-icon g-flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
           </button>
           <button class="tt-nav" :title="`${t('year')} +1`" @click="stepUnit('year', 1)">
-            <span translate="no" class="material-symbols-outlined">keyboard_double_arrow_right</span>
+            <svg class="tt-icon g-flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 5l7 7-7 7M13 5l7 7-7 7"/></svg>
           </button>
         </div>
         <div class="tt-cal-grid">
@@ -436,7 +451,7 @@ onUnmounted(() => {
 
 /* Live 칩의 상태 점 — 켜지면 브랜드색으로 맥동 */
 .tt-dot {
-    @apply inline-block w-2 h-2 rounded-full mr-1.5;
+    @apply inline-block w-2 h-2 rounded-full me-1.5;
     background-color: color-mix(in srgb, currentColor 35%, transparent);
 }
 .tt-dot-live {
@@ -454,7 +469,7 @@ onUnmounted(() => {
     }
 }
 .tt-chip-icon {
-    @apply text-[0.85rem]! mr-1;
+    @apply w-3.5 h-3.5 shrink-0 me-1;
 }
 
 /* 큰 리드아웃 — 페이지의 "현재 값". 복사 버튼이 얹히는 코드 박스와 같은 면 */
@@ -491,8 +506,8 @@ onUnmounted(() => {
         background-color: var(--ctrl-bg-on);
         border-color: var(--ctrl-border-on);
     }
-    .material-symbols-outlined {
-        @apply text-base!;
+    .tt-icon {
+        @apply w-4 h-4 shrink-0;
     }
 }
 
@@ -565,7 +580,7 @@ onUnmounted(() => {
     }
 }
 .tt-slider-val {
-    @apply font-mono text-sm w-9 text-right shrink-0;
+    @apply font-mono text-sm w-9 text-end shrink-0;
     color: var(--c-heading);
 }
 .tt-tz {

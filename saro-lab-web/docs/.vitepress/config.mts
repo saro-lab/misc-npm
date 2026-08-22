@@ -8,8 +8,7 @@ const SITE_NAME = 'SARO Lab'
 const SITE_DESC =
   'Open source from SARO Lab — distributed systems, developer tools, and libraries. MIT licensed.'
 
-const FONT_ICONS =
-  'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,0&display=block'
+// 아이콘은 전부 컴포넌트 안의 인라인 SVG다 — 아이콘 폰트는 더 이상 받지 않는다.
 const FONT_TEXT = 'https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400..700&display=swap'
 
 /** `ko/tool/time.md` → `{ locale: 'ko', path: '/tool/time' }`. 로케일이 아니면 둘 다 빈 문자열. */
@@ -34,7 +33,6 @@ export default defineConfig({
     ['link', { rel: 'manifest', href: '/site.webmanifest' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
-    ['link', { rel: 'stylesheet', href: FONT_ICONS }],
     ['link', { rel: 'stylesheet', href: FONT_TEXT }],
     ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1' }],
     ['meta', { property: 'og:type', content: 'website' }],

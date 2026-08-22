@@ -29,7 +29,26 @@ export const localeNames = Object.fromEntries(
 
 export const DEFAULT_LOCALE: LocaleCode = 'en'
 
+// Right-to-left scripts. VitePress copies the locale's `dir` onto `<html dir>` — on the
+// server for the first paint, and again from the client router on every route change — so
+// declaring it here is all the wiring the layout needs.
+// 오른쪽에서 왼쪽으로 읽는 문자. VitePress 가 로케일의 `dir` 을 `<html dir>` 로 옮긴다
+// (SSR 첫 페인트 + 라우트 변경 시 클라이언트 라우터). 그래서 여기 선언만으로 배선이 끝난다.
+export const RTL_LOCALES: readonly string[] = ['ar', 'ur']
+
+export type TextDir = 'ltr' | 'rtl'
+
+export function localeDir(code: string): TextDir {
+  return RTL_LOCALES.includes(code) ? 'rtl' : 'ltr'
+}
+
+function withDir(code: LocaleCode) {
+  return { ...messages[code], dir: localeDir(code) }
+}
+
 export const vitepressLocales = {
-  root: messages[DEFAULT_LOCALE],
-  ...messages,
+  root: withDir(DEFAULT_LOCALE),
+  ...(Object.fromEntries(localeCodes.map((code) => [code, withDir(code)])) as {
+    [K in LocaleCode]: ReturnType<typeof withDir>
+  }),
 }

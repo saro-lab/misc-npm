@@ -18,9 +18,17 @@
     <!-- 카드 전체가 링크라 이 줄은 목적지를 알려주는 표시일 뿐, 중첩 링크가 아니다 -->
     <div class="pc-go">
       <span class="pc-go-label">{{ isSite ? t('open_site') : t('menu_tool') }}</span>
-      <span translate="no" class="material-symbols-outlined pc-go-icon">
-        {{ isSite ? 'open_in_new' : 'arrow_forward' }}
-      </span>
+      <svg v-if="isSite" class="pc-go-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M14 4h6v6" />
+        <path d="M20 4l-8.5 8.5" />
+        <path d="M18 14v4.5A1.5 1.5 0 0 1 16.5 20h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6H10" />
+      </svg>
+      <!-- 사이트 밖으로 나가지 않는 카드의 화살표만 뒤집는다 — 진행 방향은 글의 방향을 따른다 -->
+      <svg v-else class="pc-go-icon g-flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M13 6l6 6-6 6" />
+      </svg>
     </div>
   </a>
 </template>
@@ -91,8 +99,12 @@ const href = computed(() => projectUrl(props.project, root.value, locale.value))
 .pc-langs {
     @apply flex flex-wrap gap-1 mt-2.5;
 }
+/* 언어 이름은 문장이 아니라 식별자다. RTL 로케일에서 양방향 알고리즘이 `C/C++`
+   를 `++C/C` 로 뒤집지 않도록 칩 하나를 LTR 덩어리로 격리한다. */
 .pc-lang {
     @apply px-1.5 py-0.5 rounded font-mono text-[0.68rem];
+    direction: ltr;
+    unicode-bidi: isolate;
     color: color-mix(in srgb, var(--ctrl-fg) 70%, transparent);
     background-color: var(--ctrl-bg);
     border: 1px solid var(--ctrl-border);
@@ -109,6 +121,6 @@ const href = computed(() => projectUrl(props.project, root.value, locale.value))
     }
 }
 .pc-go-icon {
-    @apply text-base!;
+    @apply w-4 h-4 shrink-0;
 }
 </style>
