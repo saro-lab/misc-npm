@@ -15,13 +15,34 @@ export const languageList = localeNames
 /** All supported language codes. */
 export const languageCodeList = localeCodes
 
+const KOREAN_INITIALS = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ'
+
+function normalizeLanguageSearch(value: string): string {
+  return value.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase()
+}
+
+function koreanInitials(value: string): string {
+  return [...value].map((character) => {
+    const offset = character.codePointAt(0)! - 0xac00
+    return offset >= 0 && offset < 11172 ? KOREAN_INITIALS[Math.floor(offset / 588)] : character
+  }).join('')
+}
+
+export function languageMatches(code: LocaleCode, name: string, query: string): boolean {
+  const needle = normalizeLanguageSearch(query.trim())
+  if (!needle) return true
+  return [code, name].some((value) => {
+    return normalizeLanguageSearch(value).includes(needle) || koreanInitials(value).includes(needle)
+  })
+}
+
 function isLocaleCode(code: string): code is LocaleCode {
   return (localeCodes as string[]).includes(code)
 }
 
 /** The language list in a random order — used to rotate the switcher menu. */
-export function languageRandom(): [string, string][] {
-  return [...Object.entries(localeNames)].sort(() => Math.random() - 0.5)
+export function languageRandom(): [LocaleCode, string][] {
+  return [...Object.entries(localeNames) as [LocaleCode, string][]].sort(() => Math.random() - 0.5)
 }
 
 /** The current locale's path prefix, e.g. `/ko` — empty string at the site root. */
